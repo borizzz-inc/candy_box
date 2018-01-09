@@ -1,0 +1,19 @@
+.calc {
+	margin-top: 0px;
+	border: 10px solid #116062;
+	padding: 5px 5px;
+}	
+#final_price {
+	font-size: 40px;
+	font-weight: 900;
+}
+.card-images {
+    border: 10px solid #116062;
+	padding-top: 0px;
+}
+.card-images img {
+	display: none;
+}
+#card_1_0 {
+	display: inline-block;
+}
