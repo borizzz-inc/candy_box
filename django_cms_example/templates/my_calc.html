@@ -65,7 +65,7 @@
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
     {% block header %}
-    <header class="intro-header" style="background-image: url('{{ STATIC_URL }}img/about-bg.jpg')">
+    <header class="intro-header" style="background-image: url('{{ STATIC_URL }}img/about-bg.png')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -89,8 +89,8 @@
     			<div class="col-sm-4">
     				<div class="calc">
     					<h2>Рассчет стоимости</h2>
-    					<label for="card_edition">Выберите вес</label><br>
-    					<select class="form-control" name="edition" id="card_edition">
+    					<label for="balance_gr">Выберите вес</label><br>
+    					<select class="form-control" name="balance_gr" id="balance_gr">
     						<option value="500">500 гр</option>
     						<option value="1000">1000 гр</option>
     						<option value="1500">1500 гр</option>
@@ -109,15 +109,15 @@
     						<option value="15000">15000</option>
     					</select>
     					<br>
-    					<label for="card_paper">Выберите основу</label>
-    					<select name="card_paper" id="card_paper" class="form-control">
+    					<label for="cake_basis">Выберите основу</label>
+    					<select name="cake_basis" id="cake_basis" class="form-control">
     						<option data-paper-ratio="1" value="Мусовый торт">Мусовый торт</option>
     						<option data-paper-ratio="1" value="Бисвит">Бисквит</option>
     						<option data-paper-ratio="1" value="Безе">Безе</option>
     					</select>
     					<br>
-    					<label for="card_color">Выберите формат оформления</label>
-    					<select name="card_color" id="card_color" class="form-control">
+    					<label for="cake_decoration">Выберите формат оформления</label>
+    					<select name="cake_decoration" id="cake_decoration" class="form-control">
     						<option data-print="14" data-print-file="110" data-color="1" value="Кондитерская мастика">Кондитерская мастика</option>
     						<option data-print="28" data-print-file="220" data-color="2" value="Глазурь">Глазурь</option>
     						<option data-print="37" data-print-file="110" data-color="3" value="Велюр">Велюр</option>
@@ -156,11 +156,11 @@
     		$('.calc select').change(function(){
     			$edition = $('select#card_edition').val();
     			$paper = $('select#card_paper').val();
-    			$color = $('select#card_color').val();
-    			$print_file = $('select#card_color option:selected').attr('data-print-file');
+    			$color = $('select#cake_decoration').val();
+    			$print_file = $('select#cake_decoration option:selected').attr('data-print-file');
     			$paper_ratio = $('select#card_paper option:selected').attr('data-paper-ratio');
-    			$color_format = $('select#card_color option:selected').attr('data-color');
-    			$print = $('select#card_color option:selected').attr('data-print');
+    			$color_format = $('select#cake_decoration option:selected').attr('data-color');
+    			$print = $('select#cake_decoration option:selected').attr('data-print');
     			$division = 30;
     			$price = $edition + parseInt($print);
     			console.log($price);
