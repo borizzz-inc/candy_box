@@ -89,39 +89,40 @@
     			<div class="col-sm-4">
     				<div class="calc">
     					<h2>Рассчет стоимости</h2>
-    					<label for="balance_gr">Выберите вес</label><br>
-    					<select class="form-control" name="balance_gr" id="balance_gr">
-    						<option value="500">500 гр</option>
+    					<label for="ves_torta">Выберите вес</label><br>
+    					<select class="form-control" name="edition" id="ves_torta">
+    						<option value="0">0 гр</option>
     						<option value="1000">1000 гр</option>
     						<option value="1500">1500 гр</option>
-    						<option value="2000">2000</option>
-    						<option value="2500">2500</option>
-    						<option value="3000">3000</option>
-    						<option value="3500">3500</option>
-    						<option value="4000">4000</option>
-    						<option value="4500">4500</option>
-    						<option value="5000">5000</option>
-    						<option value="6000">6000</option>
-    						<option value="7000">7000</option>
-    						<option value="8000">8000</option>
-    						<option value="9000">9000</option>
-    						<option value="10000">10000</option>
-    						<option value="15000">15000</option>
+    						<option value="2000">2000 гр</option>
+    						<option value="2500">2500 гр</option>
+    						<option value="3000">3000 гр</option>
+    						<option value="3500">3500 гр</option>
+    						<option value="4000">4000 гр</option>
+    						<option value="4500">4500 гр</option>
+    						<option value="5000">5000 гр</option>
+    						<option value="6000">6000 гр</option>
+    						<option value="7000">7000 гр</option>
+    						<option value="8000">8000 гр</option>
+    						<option value="9000">9000 гр</option>
+    						<option value="10000">10000 гр</option>
+    						<option value="15000">15000 гр</option>
     					</select>
     					<br>
-    					<label for="cake_basis">Выберите основу</label>
-    					<select name="cake_basis" id="cake_basis" class="form-control">
+    					<label for="tip_torta">Выберите тип торта</label>
+    					<select name="tip_torta" id="tip_torta" class="form-control">
     						<option data-paper-ratio="1" value="Мусовый торт">Мусовый торт</option>
-    						<option data-paper-ratio="1" value="Бисвит">Бисквит</option>
-    						<option data-paper-ratio="1" value="Безе">Безе</option>
+    						<option data-paper-ratio="2" value="Бисвит">Бисквит</option>
+    						<option data-paper-ratio="3" value="Безе">Безе</option>
     					</select>
     					<br>
-    					<label for="cake_decoration">Выберите формат оформления</label>
-    					<select name="cake_decoration" id="cake_decoration" class="form-control">
-    						<option data-print="14" data-print-file="110" data-color="1" value="Кондитерская мастика">Кондитерская мастика</option>
-    						<option data-print="28" data-print-file="220" data-color="2" value="Глазурь">Глазурь</option>
-    						<option data-print="37" data-print-file="110" data-color="3" value="Велюр">Велюр</option>
-    						<option data-print="51" data-print-file="220" data-color="4" value="Классика">Классика</option>
+    					<label for="oformlenie_torta">Выберите Оформление</label>
+    					<select name="oformlenie_torta" id="oformlenie_torta" class="form-control">
+    						<option data-print-file="100" data-color="1" value="КЛАССИКА">КЛАССИКА</option>
+    						<option data-print-file="200" data-color="2" value="С фигуркой">С фигукой</option>
+    						<option data-print-file="300" data-color="3" value="МАСТИКА">МАСТИКА</option>
+    						<option data-print-file="400" data-color="4" value="ВЕЛЮР">ВЕЛЮР</option>
+    						<option data-print-file="500" data-color="5" value="ГЛАЗУРЬ">ГЛАЗУРЬ</option>
     					</select>
     					<br>
     					<h4>
@@ -150,19 +151,17 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script>
     	$(document).ready(function(){
     		$('.calc select').change(function(){
-    			$edition = $('select#card_edition').val();
-    			$paper = $('select#card_paper').val();
-    			$color = $('select#cake_decoration').val();
-    			$print_file = $('select#cake_decoration option:selected').attr('data-print-file');
-    			$paper_ratio = $('select#card_paper option:selected').attr('data-paper-ratio');
-    			$color_format = $('select#cake_decoration option:selected').attr('data-color');
-    			$print = $('select#cake_decoration option:selected').attr('data-print');
-    			$division = 30;
-    			$price = $edition + parseInt($print);
+    			$ves = $('select#ves_torta').val();
+    			$paper = $('select#tip_torta').val();
+    			$color = $('select#oformlenie_torta').val();
+    			$print_file = $('select#oformlenie_torta option:selected').attr('data-print-file');
+    			$paper_ratio = $('select#tip_torta option:selected').attr('data-paper-ratio');
+    			$color_format = $('select#oformlenie_torta option:selected').attr('data-color');
+    			$price = parseInt($ves) + parseInt($paper_ratio) + parseInt($print_file);
     			console.log($price);
     			$('span#final_price').text($price);
     			if ($color_format == 1) {
@@ -187,8 +186,7 @@
     			}
     		})
     	})
-    </script>
-        {% endblock content %}
+    </script>	        {% endblock content %}
     </div>
 
     <hr>

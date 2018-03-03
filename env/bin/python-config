@@ -1,4 +1,4 @@
-#!/home/user/env/bin/python
+#!/media/user/752e46f0-6e0d-4cad-baa9-e48cd2812b30/candy_box/env/bin/python
 
 import sys
 import getopt
